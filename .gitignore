@@ -1,0 +1,13 @@
+# Project exclude paths
+/app/controllers/api-controller.js
+/app/controllers/dom-controller.js
+/app/main.js
+/examples-ts/classes-and-interfaces.js
+/examples-ts/index-signature.js
+/examples-ts/interfaces.js
+/examples-ts/ts1.js
+/examples-ts/union-type.js
+/node_modules/
+/types/interfaces/itunes-api-result.js
+
+/app/**/*.js
