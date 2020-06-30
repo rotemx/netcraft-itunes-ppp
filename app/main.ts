@@ -3,22 +3,15 @@ import {DomController} from "./controllers/dom-controller.js";
 
 const
 	apiController = new ApiController(),
-	domController = new DomController();
-
+	domController = new DomController(apiController);
 
 // IIFE
 (async () => {
-	console.log('MAIN is starting!');
-	let songs;
-	try {
-		songs = (await apiController.getResults('micheal+jackson')).results;
-		
-	} catch (e) {
-		console.error(e);
-	}
-	// songs.forEach(song => domController.addSong(song))
-	songs
-		.forEach(song => domController.addSong(song))
+	// DO NOT !
+	// $('#searchButton').click(..)
+	// document.getElementById...
+	await domController.init()
+	console.log('[>] MAIN is starting!');
 })()
 
 
