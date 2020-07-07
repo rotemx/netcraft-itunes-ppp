@@ -10,7 +10,24 @@ const
 	// DO NOT !
 	// $('#searchButton').click(..)
 	// document.getElementById...
-	await domController.init()
+	
+	//maybe...
+	// await domController.init()
+	
+	domController.onSearch = async searchTerm => {
+		console.log('This is the onSearch handler function');
+		domController.clearSongList()
+		let songs;
+		try {
+			songs = (await apiController.getResults(<string>searchTerm)).results;
+			
+		} catch (e) {
+			console.error(e);
+		}
+		songs.forEach(song => domController.addSongToDom(song))
+		
+	}
+	
 	console.log('[>] MAIN is starting!');
 })()
 

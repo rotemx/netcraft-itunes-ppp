@@ -1,55 +1,70 @@
-import {SongResult}    from "../../types/interfaces/itunes-api-result";
-import {ApiController} from "./api-controller";
+import {SongResult} from "../../types/interfaces/itunes-api-result";
 
 declare let $: JQueryStatic;
 
 export class DomController {
-	container: JQuery;
+	songListContainer: JQuery;
 	searchButton: JQuery;
 	searchInput: JQuery;
 	
-	constructor(public apiCtrl:ApiController) {
-		window['domCtrl'] = this;
+	onSearch: (search: string) => void;
+	
+	constructor() {
+		window['domCtrl']      = this;
+		this.songListContainer = $('#results-wrapper')
+		this.searchButton      = $('#searchButton')
+		this.searchInput       = $('#searchInput')
 		
-		
-		this.container    = $('#results-wrapper')
-		this.searchButton = $('#searchButton')
-		this.searchInput  = $('#searchInput')
-		
-		this.searchButton.click(() => this.onSearchClick)
+		this.searchInput
+		    .on('keyup', (ev) => {
+			    this.onSearchClicked()
+			    // if (ev.key === 'Enter') {
+			    // }
+		    });
+		this.searchButton.click(() => this.onSearchClicked())
 	}
 	
-	async onSearchClick() {
-		const searchTerm = this.searchInput.val();
-		
-		if (!searchTerm){
-			alert('Please enter a search term')
+	private onSearchClicked() {
+		const searchTerm = <string>this.searchInput.val();
+		if (!searchTerm) {
+			// alert('Please enter a search term')
 			return
 		}
-		
-		let songs;
-		try {
-			songs = (await this.apiCtrl.getResults(<string>searchTerm)).results;
-			
-		} catch (e) {
-			console.error(e);
+		if (typeof this.onSearch === 'function') {
+			console.log('onSearch event is working!');
+			this.onSearch(searchTerm)
 		}
-		songs.forEach(song => this.addSongToDom(song))
-		
-		
 	}
 	
 	addSongToDom(song: SongResult): void {
-		const div = `
-				<div class="song-div">
-					${song.artistName} - ${song.trackName}
+		const div = $(`
+				<div>
+					<div class="artist">
+						${song.artistName}
+					</div>
+					<div class="track-name">
+						${song.trackName}
+					</div>
+					<div class="song-player">
+						<audio
+						preload="auto"
+						controls
+						type="audio/x-m4a"
+						src="${song.previewUrl}"
+						>
+						</audio>
+					</div>
 				</div>
-					`;
+					`);
 		
-		this.container.append(div)
+		this.songListContainer.append(div)
 	}
 	
 	async init() {
 		console.log('Do something asyncy..');
+	}
+	
+	clearSongList() {
+		this.songListContainer.empty();
 	}
 }

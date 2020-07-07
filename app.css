@@ -1,3 +1,146 @@
 .search-header {
 	margin-bottom: 30px;
 }
+
+
+
+.wrap {
+    background: #92b4f1;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    background: white;
+}
+
+
+body {
+    background: #d6a9a9;
+}
+
+body {
+    background: #92b4f1;
+    color: #3a3a3a;
+}
+
+html,body {
+    height: 100%;
+    width: 100%;
+    /* border: 2px solid red; */
+    margin: 0;
+    display: flex;
+    font-family: 'Exo 2', sans-serif;
+}
+
+header {
+    height: 170px;
+    background: #2a2a2a;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 60px 10px 60px;
+}
+
+.main-title {
+    font-size: 50px;
+    font-family: 'Yellowtail', cursive;
+}
+
+.secondary-title {
+    font-size: 18px;
+    height: 40px;
+    font-weight: 100;
+}
+
+input#searchInput {
+    border: none;
+    height: 30px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    text-align: center;
+    color: #565656;
+    font-weight: 100;
+}
+
+.toolbar {
+    display: flex;
+    /* border: 2px solid white; */
+    flex: 1;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+div#searchButton {
+    cursor: pointer;
+    margin-left: 26px;
+    height: 40px;
+    border-radius: 10px;
+    padding: 0 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div#searchButton:hover {
+    background: #ffffff47;
+}
+
+div#results-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+footer {
+    background: #2a2a2a;
+    color: white;
+    display: flex;
+    padding: 10px 30px 10px 0;
+    font-size: 18px;
+    font-weight: 100;
+    justify-content: flex-end;
+}
+
+.content > div {
+    border-radius: 20px;
+    background-color: #ffffff4f;
+    border-bottom: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0 10px 0;
+    border-top: 1px solid gray;
+}
+
+.song-player {
+    /* width: 100px; */
+}
+
+.song-div {
+    font-size: 20px;
+}
+
+.artist {
+    font-size: 21px;
+    font-weight: 600;
+}
+
+.track-name {
+    font-size: 30px;
+}
+
+audio {
+    width: 250px;
+    height: 30px;
+    margin-top: 19px;
+}
